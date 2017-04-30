@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <dlfcn.h>
 #include <sys/types.h>
-#include <python2.7/Python.h>
+#include <Python.h>
 #include "../../src/runner.h"
 
 
