@@ -13,7 +13,7 @@
 
 #if PY_MAJOR_VERSION >= 3
   #define PyString_Check PyBytes_Check
-  #define PyString_AsString(str) str
+  #define PyString_AsString(str) PyBytes_AsString(str)
 #endif
 
 static PyObject *judger_run(PyObject *self, PyObject *args, PyObject *kwargs) {
