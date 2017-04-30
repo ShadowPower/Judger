@@ -12,8 +12,8 @@
     }
 
 #if PY_MAJOR_VERSION >= 3
-  #define PyString_Check PyBytes_Check
-  #define PyString_AsString(str) PyBytes_AsString(str)
+  #define PyString_Check(obj) PyUnicode_Check(obj)
+  #define PyString_AsString(str) PyUnicode_AsUTF8(str)
 #endif
 
 static PyObject *judger_run(PyObject *self, PyObject *args, PyObject *kwargs) {

@@ -20,7 +20,7 @@ class SeccompTest(base.BaseTestCase):
                        "output_path": "/dev/null",
                        "error_path": "/dev/null",
                        "args": [],
-                       "env": [b"env=judger_test", b"test=judger"],
+                       "env": ["env=judger_test", "test=judger"],
                        "log_path": "judger_test.log",
                        "seccomp_rule_name": None,
                        "uid": 0,
@@ -41,13 +41,13 @@ class SeccompTest(base.BaseTestCase):
         self.assertEqual(result["result"], _judger.RESULT_SUCCESS)
 
         # with general seccomp
-        config["seccomp_rule_name"] = b"general"
+        config["seccomp_rule_name"] = "general"
         result = _judger.run(**config)
         self.assertEqual(result["result"], _judger.RESULT_RUNTIME_ERROR)
         self.assertEqual(result["signal"], 31)
 
         # with c_cpp seccomp
-        config["seccomp_rule_name"] = b"c_cpp"
+        config["seccomp_rule_name"] = "c_cpp"
         result = _judger.run(**config)
         self.assertEqual(result["result"], _judger.RESULT_RUNTIME_ERROR)
         self.assertEqual(result["signal"], 31)
@@ -63,13 +63,13 @@ class SeccompTest(base.BaseTestCase):
         self.assertEqual("Helloworld\n", self.output_content(config["output_path"]))
 
         # with general seccomp
-        config["seccomp_rule_name"] = b"general"
+        config["seccomp_rule_name"] = "general"
         result = _judger.run(**config)
         self.assertEqual(result["result"], _judger.RESULT_RUNTIME_ERROR)
         self.assertEqual(result["signal"], 31)
 
         # with c_cpp seccomp
-        config["seccomp_rule_name"] = b"c_cpp"
+        config["seccomp_rule_name"] = "c_cpp"
         result = _judger.run(**config)
         self.assertEqual(result["result"], _judger.RESULT_RUNTIME_ERROR)
         self.assertEqual(result["signal"], 31)
@@ -85,13 +85,13 @@ class SeccompTest(base.BaseTestCase):
         self.assertEqual("test", self.output_content("/tmp/fffffffffffffile.txt"))
 
         # with general seccomp
-        config["seccomp_rule_name"] = b"general"
+        config["seccomp_rule_name"] = "general"
         result = _judger.run(**config)
         self.assertEqual(result["result"], _judger.RESULT_RUNTIME_ERROR)
         self.assertEqual(result["signal"], 31)
 
         # with c_cpp seccomp
-        config["seccomp_rule_name"] = b"c_cpp"
+        config["seccomp_rule_name"] = "c_cpp"
         result = _judger.run(**config)
         self.assertEqual(result["result"], _judger.RESULT_RUNTIME_ERROR)
         self.assertEqual(result["signal"], 31)
