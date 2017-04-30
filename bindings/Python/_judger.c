@@ -12,7 +12,7 @@
     }
 
 #if PY_MAJOR_VERSION >= 3
-  #define PyString_Check PyUnicode_Check
+  #define PyString_Check PyBytes_Check
   #define PyString_AsString(str) str
 #endif
 
